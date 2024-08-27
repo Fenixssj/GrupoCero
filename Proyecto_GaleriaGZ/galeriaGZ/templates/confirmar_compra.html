@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grupo Cero</title>
+        <link rel="icon" href="{% static 'images/logo1.jpg' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+        <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <style>
+            .centered-div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                text-align: center;
+            }
+
+            .cuadro{
+                background-color: rgba(135, 135, 135, 0.5);
+                border-radius: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                border: 1px solid #424242;
+                padding: 16px;
+            }
+
+            .button-group {
+                display: flex;
+                justify-content: center;
+                gap: 10px; /* Ajusta el espacio entre los botones según sea necesario */
+            }   
+            
+            button{
+                padding: 10px 20px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #696969;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            button:hover {
+                color: #696969;
+                background-color: #dedede;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="centered-div">
+            <div class="cuadro">
+                <h2>Confirmar Compra</h2>
+                <p>¿Estás seguro de querer realizar esta compra?</p>
+                <div class="button-group">
+                    <form action="{% url 'confirmar_compra' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="confirmar">Confirmar Compra</button>
+                    </form>
+                    <form action="{% url 'carrito_de_compras' %}" method="get">
+                        <button type="submit">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

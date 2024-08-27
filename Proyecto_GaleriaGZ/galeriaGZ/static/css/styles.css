@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'K2D', sans-serif;
+}
+
+.titulo-dest {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+body { 
+    height: 100%; 
+    margin: 0; 
+}
+
+.boton-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px auto;
+}
+
+
+.boton-card {
+    display: flex;
+    width: 100%;
+    border: 1px solid #7a7a7a;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.boton-card:hover {
+    transform: scale(1.05);
+}
+
+.boton-image {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 8 / 3;
+    object-fit: cover;
+    position: relative;
+}
+
+.boton-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.boton-text {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 20px;
+    background: #c1bfbd;
+    color: #333;
+    margin: 0 auto;
+}
+
+/* Estilo para el pie de página */
+.footer {
+    background-color: #333;
+    color: #faf7f3;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer ul li a {
+    color: #faf7f3;
+    text-decoration: none;
+}
+
+/* Estilo para el logo en la barra de navegación */
+.navbar-brand img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 991.98px) {
+
+    /* Estilo para ajustar las tres rayitas del menú en pantallas más pequeñas */
+    .navbar-toggler {
+        margin-right: 15px;
+    }
+}
+
+/* Estilo para ponerle una imagen de fondo */
+body {
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Este es porque no pude cambiar el color del enlace en la misma linea del "registrate" */
+.registrate p a {
+    color: #696969;
+}

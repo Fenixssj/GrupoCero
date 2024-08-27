@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eliminar del Carrito</title>
+        <style>
+            /* Estilos opcionales para mejorar la apariencia */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                padding: 20px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .item {
+                margin-bottom: 20px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .item img {
+                max-width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            .item .details {
+                margin-bottom: 10px;
+            }
+            .btn {
+                display: inline-block;
+                padding: 8px 16px;
+                font-size: 14px;
+                color: #fff;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .btn:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Eliminar del Carrito</h2>
+            <div class="item">
+                <img src="{{ item.obra.imagen.url }}" alt="{{ item.obra.nombre }}">
+                <div class="details">
+                    <p><strong>Obra:</strong> {{ item.obra.nombre }}</p>
+                    <p><strong>Autor:</strong> {{ item.obra.autor }}</p>
+                    <p><strong>Precio:</strong> ${{ item.obra.precio }}</p>
+                    <p><strong>Cantidad:</strong> {{ item.cantidad }}</p>
+                </div>
+                <form action="{% url 'eliminar_del_carrito' item.obra.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn" value="Eliminar">
+                </form>
+            </div>
+            <a href="{% url 'carrito_de_compras' %}" class="btn">Volver al Carrito</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+
+.tarjeta-compra {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 20px; /* Espacio entre las columnas */
+    padding: 20px;
+    background-color: rgba(135, 135, 135, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #424242;
+    max-width: 800px;
+    margin: 20px auto; /* Centrar la tarjeta en la página */
+}
+
+.tarjeta-imagen {
+    height: 200px; 
+    width: 100%; 
+    object-fit: cover;
+    border-radius: 20px 20px 0 0; 
+    display: flex;
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center;
+}
+
+.tarjeta-imagen img {
+    height: 100%;
+    width: auto;
+    max-height: 100%; 
+    max-width: 100%; 
+    border: 3px solid #fff;
+}
+
+.tarjeta-detalles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tarjeta-detalles h1 {
+    margin-top: 0;
+}
+
+.tarjeta-detalles form {
+    display: grid;
+    gap: 10px; /* Espacio entre las filas del grid */
+}
+
+.cantidad-input input {
+    padding: 5px; /* Ajusta el relleno del input */
+    width: 60px; /* Establece un ancho fijo para el input */
+    border: 1px solid #ccc; /* Añade un borde al input */
+    border-radius: 4px; /* Añade bordes redondeados al input */
+}
+
+.cantidad-input label {
+    margin-bottom: 0; /* Elimina el margen inferior del label */
+}
+
+.tarjeta-detalles button {
+    align-self: center;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #696969;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.tarjeta-detalles button:hover {
+    color: #696969;
+    background-color: #dedede;
+}

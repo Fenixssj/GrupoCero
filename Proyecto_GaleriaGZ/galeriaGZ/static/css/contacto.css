@@ -1,0 +1,44 @@
+.container {
+    padding: 28px;
+    max-width: 659px;
+    padding: 28px;
+}
+
+.formulario {
+    max-width: 659px;
+    padding: 28px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(227, 213, 202, 0.5);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+}
+
+.formulario label {
+    color: #000; /* Color de texto para las etiquetas de formulario */
+}
+
+/* Estilo para el pie de página */
+.footer ul li a {
+    color: #faf7f3;
+    text-decoration: none;
+}
+
+/* Estilo para el logo en la barra de navegación */
+.navbar-brand img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 991.98px) {
+    /* Estilo para ajustar las tres rayitas del menú en pantallas más pequeñas */
+    .navbar-toggler {
+        margin-right: 15px;
+    }
+}
+
+/* Este es porque no pude cambiar el color del enlace en la misma linea del "registrate" */
+.registrate p a {
+    color: #696969;
+}

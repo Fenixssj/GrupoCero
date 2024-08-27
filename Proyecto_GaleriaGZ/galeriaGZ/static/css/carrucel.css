@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+.card {
+  position: relative;
+  background-color: rgba(135, 135, 135, .5);
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  width: 300px; 
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: auto; 
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; 
+  position: relative;
+  z-index: 100;
+}
+
+.swiper {
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 20px; 
+  box-sizing: border-box; 
+}
+
+
+
+section {
+  position: relative;
+  height: 450px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 40px; 
+  margin-bottom: 40px; 
+}
+
+
+.section .card .image {
+  height: auto; 
+  width: 100%;
+  max-height: 60%; 
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.section .card .image img{
+  height:80%;
+  width: 100%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.card .data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; 
+}
+
+.card .data .autor {
+  font-size: 0.8rem; 
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+
+  overflow: hidden; 
+
+
+}
+
+.swiper-button-next, .swiper-button-prev{
+  opacity: 0.7;
+  color: #211d1d;
+  transition: all 0.3s ease;
+}
+
+
+/*Media query*/
+@media screen and (min-width:576px) {
+  .container{
+      display: flex;
+  }
+  .card{
+      display: block;
+      margin-right: 0;
+  }
+  .image{
+      height: 23vw;
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+  
+  .swiper {
+    max-width: none; 
+  }
+  
+  section {
+    width: 100%;
+    max-width: 1075px;
+    overflow: hidden; 
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .swiper {
+    width: 100%;
+  }
+  .card {
+    width: 90%; 
+    max-width: 296px; 
+  }
+  .section .card .image {
+    height: 23vw; 
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .section .card .image {
+    max-height: 40%; 
+  }
+}

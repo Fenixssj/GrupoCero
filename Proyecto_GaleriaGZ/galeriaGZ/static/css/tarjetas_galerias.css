@@ -1,0 +1,127 @@
+      /* Estilo para el fortmato card: */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+        gap: 50px;
+        justify-content: center;
+        padding: 20px;
+
+      }
+    
+      .card {
+        position: relative;
+        background-color: rgba(135, 135, 135, 0.5);
+        border-radius: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #424242;
+        padding: 16px;
+        text-align: center;
+        width: 300px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: auto;
+        
+      }
+    
+      .card .image {
+        height: 200px; 
+        width: 100%; 
+        object-fit: cover;
+        border-radius: 20px 20px 0 0; 
+      }
+    
+      .card .image img {
+        height: 100%;
+        width: auto;
+        max-height: 100%; 
+        max-width: 100%; 
+        border: 3px solid #fff;
+      }
+    
+      .card .data {
+        max-width: 100%;
+        max-height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+        padding: 16px;
+      }
+    
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #696969;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    
+      .btn:hover {
+        color: #696969;
+        background-color: #dedede;
+      }
+    
+      /* Media Query para cards */
+
+      @media (max-width: 1400px) {
+        .gallery {
+          grid-template-columns: repeat(2, 250px); 
+          gap: 30px;
+          justify-content: center;
+        }
+
+        .card {
+          display: block;
+          margin-right: 0;
+          width: 250px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+            @media (max-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(2, 250px);
+          gap: 30px;
+          justify-content: center; 
+        }
+
+        .card {
+          width: 250px;
+          margin-left: auto; 
+          margin-right: auto; 
+        }
+      }
+
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          justify-content: center; 
+        }
+
+        .card {
+          width: 60%; 
+          margin-left: auto; 
+          margin-right: auto; 
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 10px;
+          justify-content: center;
+        }
+
+        .card {
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }

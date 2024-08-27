@@ -1,0 +1,21 @@
+.container{
+    margin-top: 30px; 
+    
+}
+
+.card-body{
+    background:rgba(227, 213, 202, 0.5);
+
+}
+
+.tarjeta{
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-text{
+    align-items: center;
+    justify-content: center;
+}
+

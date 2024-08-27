@@ -1,0 +1,202 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Cero</title>
+    <link rel="icon" href="{% static 'images/logo1.jpg' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+  </head>
+
+  <body>
+    <!-- Menú -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0;">
+      <div class="container-fluid" style="background-color: #e3d5ca; padding: 5px;">
+        <a class="navbar-brand">
+          <img src="{% static 'images/logo1.jpg' %}" alt="Logo de la Cooperativa de Arte" width="100px">
+          <!-- ESTE ES PARA LLAMAR IMAGEN -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'categoria' %}">Categoría</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ingresar_obra' %}">Nueva Obra</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <ul class="navbar-nav flex-column flex-sm-row">
+                <li class="nav-item">
+                  {% if user.is_authenticated %}
+                  <a class="nav-link">
+
+                  </a>
+                  {% else %}
+                  <a class="nav-link" href="{% url 'registro' %}">Registrate</a>
+                  {% endif %}
+                </li>
+                <li class="nav-item">
+                  {% if user.is_authenticated %}
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    {{ user.username }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                  </ul>
+                  {% else %}
+                  <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                  {% endif %}
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div style="display: flex; gap: 10px;">
+            {% if user.is_authenticated %}
+            <button class="btn btn-outline-success d-flex align-items-center" type="button"
+              style="width: 50px; height: 50px; border-radius: 8px; color: #ffffff; background-color: #696969; border-color: #faf7f3; position: relative; overflow: hidden;">
+              <a class="nav-link" href="{% url 'carrito_de_compras' %}"
+                style="color: #ffffff; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart"
+                  viewBox="0 0 16 16" style="flex-shrink: 0;">
+                  <path
+                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg>
+              </a>
+              {% if carrito_items_count > 0 %}
+              <span class="badge badge-pill badge-danger" style="position: absolute; top: 5px; right: 5px; background-color: red; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+                  {{ carrito_items_count }}
+              </span>
+              {% endif %}
+            </button>
+            {% else %}
+            <a class="nav-link"> </a>
+            {% endif %}
+
+            <form class="d-flex" onsubmit="BuscadorHtml(event)" style="margin-left: 10px;">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success d-flex align-items-center" type="submit"
+                style="width: 50px; height: 50px; border-radius: 8px; color: #ffffff; background-color: #696969; border-color: #faf7f3;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="cart-container">
+      <h1>Carrito de Compras</h1>
+      <table>
+          <thead>
+              <tr>
+                  <th>Imagen</th>
+                  <th>Obra y Artista</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+              {% for item in carrito %}
+              <tr>
+                  <td><img src="{{ item.obra.imagen.url }}" alt="{{ item.obra.nombre }}"></td>
+                  <td>{{ item.obra.nombre }} - {{ item.obra.autor }}</td>
+                  <td>${{ item.obra.precio }}</td>
+                  <td>{{ item.cantidad }}</td>
+                  <td>${{ item.subtotal }}</td>
+                  <td>
+                      <form action="{% url 'eliminar_del_carrito' item.obra.id %}" method="post">
+                          {% csrf_token %}
+                          <button type="submit">Eliminar</button>
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="4">Total</td>
+                  <td>${{ total }}</td>
+                  <td></td>
+              </tr>
+          </tfoot>
+      </table>
+
+      <form action="{% url 'confirmar_compra' %}" method="get">
+          <button type="submit">Realizar Compra</button>
+      </form>
+  </div>
+    
+
+    <!-- Pie de página (Importante que la position sea relative para que no tape el contenido) -->
+    <footer class="footer text-dark mt-5" style="background-color: #696969; padding: 10px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled" style="padding: 10px;">
+              <li><a href="{% url 'nosotros' %}">Sobre nuestra Cooperativa</a></li>
+              <li><a href="#">Despacho</a></li>
+              <li><a href="#">Devolución</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-start">
+            <ul class="list-unstyled" style="padding: 10px;">
+              <li><a href="#">Términos y condiciones</a></li>
+              <li><a href="{% url 'contacto' %}">Contacto</a></li>
+              <li class="nav-item">
+                {% if user.is_authenticated %}
+                <a href="{% url 'perfil' %}">Perfil</a>
+                {% else %}
+
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-12 text-center" style="padding: 10px; color: #bdbaba;">
+            <span>© 2024 Derechos Reservados</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>
+{% endblock %}
